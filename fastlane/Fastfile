@@ -1,7 +1,8 @@
 default_platform(:mac)
 
 platform :mac do
-  lane :local do
+  lane :local do |options|
+    clean_build = options[:clean] || false
 
     # check_apple_agreement(
     #   apple_id: "ospfranco@protonmail.com",
@@ -17,11 +18,11 @@ platform :mac do
     path = "/Users/robert/src/robertarles/sol/"
     appFileName = path + "Sol.app"
     zipFileName = path + "releases/local/" + version + ".zip"
-    
+
     gym(
       scheme: "release",
       configuration: "Release",
-      clean: true,
+      clean: clean_build,
       workspace: "./macos/sol.xcworkspace",
       output_directory: path,
       export_method: "development"
@@ -69,7 +70,11 @@ platform :mac do
       end
     end
 
-    sh("killall", "sol")
+    begin
+      sh("killall", "sol")
+    rescue
+      puts "Sol not running"
+    end
     sh("cp", "-R", appFileName, "/Applications/")
     sh("open", "/Applications/Sol.app")
 

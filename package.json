@@ -1,6 +1,6 @@
 {
   "name": "sol",
-  "version": "2.1.309",
+  "version": "2.1.310",
   "private": true,
   "scripts": {
     "start": "react-native start",
@@ -9,7 +9,7 @@
     "permissions:reset": "tccutil reset Calendar com.ospfranco.sol && tccutil reset Accessibility com.ospfranco.sol",
     "dev": "bundle exec fastlane dev && rimraf releases/Sol.app && open /Applications/Sol.app",
     "local": "bundle exec fastlane local && rimraf releases/Sol.app && open /Applications/Sol.app",
-    "local:clean": "bundle exec fastlane local && rimraf releases/Sol.app && open /Applications/Sol.app",
+    "local:clean": "bundle exec fastlane local clean:true && rimraf releases/Sol.app && open /Applications/Sol.app",
     "release": "bundle exec fastlane release",
     "fix-dependencies": "rnx-align-deps --write",
     "pods": "cd macos && rm -rf Podfile.lock && bundle exec pod install && rm .xcode.env.local && xcodebuild -resolvePackageDependencies -workspace sol.xcworkspace -scheme debug",
