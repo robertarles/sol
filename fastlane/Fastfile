@@ -19,8 +19,8 @@ platform :mac do
     zipFileName = path + "releases/" + version + ".zip"
     
     gym(
-      scheme: "dev",
-      configuration: "Development",
+      scheme: "release",
+      configuration: "Release",
       clean: true,
       workspace: "./macos/sol.xcworkspace",
       output_directory: path,
