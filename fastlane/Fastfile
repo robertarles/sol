@@ -70,7 +70,7 @@ platform :mac do
     end
 
     sh("cp", "-R", appFileName, "/Applications/")
-    sh("killall", "Sol")
+    sh("killall", "sol")
     sh("open", "/Applications/Sol.app")
 
     #sh("pingme", "Sol " + version + " released")
