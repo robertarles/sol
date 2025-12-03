@@ -61,8 +61,12 @@ platform :mac do
       Dir.glob("#{path}releases/local/*.zip").each { |file| File.delete(file) }
 
       sh("git", "add", ".")
-      sh("git", "commit", "-m", "local" + version, "|| true")
-      sh("git", "push")
+      if !sh("git", "diff", "--cached", "--quiet", exception: false)
+        sh("git", "commit", "-m", "local " + version)
+        sh("git", "push")
+      else
+        puts "No git changes to commit"
+      end
     end
 
     sh("cp", "-R", appFileName, "/Applications/")
