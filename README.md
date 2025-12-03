@@ -27,7 +27,7 @@ Or manually download the latest [release](https://github.com/ospfranco/sol/tree/
 
 Join the Discord
 
-https://discord.gg/W9XmqCQCKP
+<https://discord.gg/W9XmqCQCKP>
 
 ## Features
 
@@ -62,7 +62,7 @@ https://discord.gg/W9XmqCQCKP
 
 You need to set up your machine for macOS development with React Native. Basically you need to install:
 
-- Mise (https://mise.jdx.dev/)
+- Mise (<https://mise.jdx.dev/>)
 - Xcode
 - Cocoapods
 

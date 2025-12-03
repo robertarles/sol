@@ -1,6 +1,5 @@
 import Cocoa
 import CoreServices
-import Sentry
 
 class Application {
   public var name: String
@@ -271,10 +270,7 @@ class Application {
         appUrls.append(contentsOf: getApplicationUrlsAt(directory))
       }
     } catch {
-      let breadcrumb = Breadcrumb(level: .info, category: "custom")
-      breadcrumb.message = "Error getting all applications at localDomainMask"
-      SentrySDK.addBreadcrumb(breadcrumb)
-      SentrySDK.capture(error: error)
+      print("Error getting all applications at localDomainMask: \(error)")
     }
 
     var applications = [String: Application]()
@@ -308,11 +304,7 @@ class Application {
             name: name, url: urlStr, isRunning: false)
         }
       } catch {
-        let breadcrumb = Breadcrumb(level: .info, category: "custom")
-        breadcrumb.message =
-          "Error resolving info for application at \(url): \(error.localizedDescription)"
-        SentrySDK.addBreadcrumb(breadcrumb)
-        SentrySDK.capture(error: error)
+        print("Error resolving info for application at \(url): \(error.localizedDescription)")
       }
     }
 
@@ -398,11 +390,7 @@ class Application {
         return []
       }
 
-      let breadcrumb = Breadcrumb(level: .info, category: "custom")
-      breadcrumb.message =
-        "Could not resolve apps url at \(url): \(error.localizedDescription)"
-      SentrySDK.addBreadcrumb(breadcrumb)
-      SentrySDK.capture(error: error)
+      print("Could not resolve apps url at \(url): \(error.localizedDescription)")
       return []
     }
   }

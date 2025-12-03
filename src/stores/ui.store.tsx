@@ -21,7 +21,6 @@ import {
 import { IRootStore } from 'store'
 import { createBaseItems } from './items'
 import MiniSearch from 'minisearch'
-import * as Sentry from '@sentry/react-native'
 import { storage } from './storage'
 import { defaultShortcuts } from 'lib/shortcuts'
 
@@ -143,7 +142,7 @@ export const createUIStore = (root: IRootStore) => {
     try {
       storage.set('@ui.store', JSON.stringify(plainState))
     } catch (e) {
-      Sentry.captureException(e)
+      console.error('Failed to persist UI store:', e)
     }
   }
 

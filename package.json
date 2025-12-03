@@ -1,6 +1,6 @@
 {
   "name": "sol",
-  "version": "2.1.288",
+  "version": "2.1.289",
   "private": true,
   "scripts": {
     "start": "react-native start",
@@ -17,7 +17,6 @@
     "@expo/plist": "^0.4.7",
     "@legendapp/list": "2.0.15",
     "@react-native-async-storage/async-storage": "2.2.0",
-    "@sentry/react-native": "7.2.0",
     "assert": "^2.0.0",
     "axios": "1.12.2",
     "chance": "^1.1.9",
