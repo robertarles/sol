@@ -3,6 +3,9 @@ CLAUDE.md
 .claude/
 .taskmaster/
 .mcp.json
+.local/
+.env
+.env.*
 
 # OSX
 #

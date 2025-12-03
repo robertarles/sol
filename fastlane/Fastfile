@@ -1,7 +1,7 @@
 default_platform(:mac)
 
 platform :mac do
-  lane :dev do
+  lane :local do
 
     # check_apple_agreement(
     #   apple_id: "ospfranco@protonmail.com",
@@ -16,7 +16,7 @@ platform :mac do
 
     path = "/Users/robert/src/robertarles/sol/"
     appFileName = path + "Sol.app"
-    zipFileName = path + "releases/" + version + ".zip"
+    zipFileName = path + "releases/local/" + version + ".zip"
     
     gym(
       scheme: "release",
@@ -48,20 +48,20 @@ platform :mac do
     #   upload_assets: [zipFileName]
     # )
 
-    release_notes = lane_context[SharedValues::SET_GITHUB_RELEASE_JSON]["body"]
+    #release_notes = lane_context[SharedValues::SET_GITHUB_RELEASE_JSON]["body"]
 
-    file_url = "https://github.com/robertarles/sol/releases/download/" + version + "/" + version + ".zip"
+    #file_url = "https://github.com/robertarles/sol/releases/download/" + version + "/" + version + ".zip"
     
     
     Dir.chdir("..") do
-      sh("./macos/Pods/Sparkle/bin/generate_appcast", "releases")
+      #sh("./macos/Pods/Sparkle/bin/generate_appcast", "releases")
 
-      sh("./scripts/appcast.js", file_url, version, release_notes)
+      #sh("./scripts/appcast.js", file_url, version, release_notes)
 
-      Dir.glob("#{path}releases/*.zip").each { |file| File.delete(file) }
+      Dir.glob("#{path}releases/local/*.zip").each { |file| File.delete(file) }
 
       sh("git", "add", ".")
-      sh("git", "commit", "-m", version)
+      sh("git", "commit", "-m", "local dev" + version)
       sh("git", "push")
     end
 

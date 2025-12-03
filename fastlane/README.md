@@ -15,10 +15,10 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## Mac
 
-### mac dev
+### mac local
 
 ```sh
-[bundle exec] fastlane mac dev
+[bundle exec] fastlane mac local
 ```
 
 
