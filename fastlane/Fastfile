@@ -61,7 +61,7 @@ platform :mac do
       Dir.glob("#{path}releases/local/*.zip").each { |file| File.delete(file) }
 
       sh("git", "add", ".")
-      sh("git", "commit", "-m", version)
+      sh("git", "commit", "-m", "local" + version, "|| true")
       sh("git", "push")
     end
 
