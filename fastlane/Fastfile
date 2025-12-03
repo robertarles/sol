@@ -27,12 +27,12 @@ platform :mac do
       export_method: "development"
     )
 
-    notarize(
-      package: appFileName,
-      bundle_id: "us.arles.sol",
-      username: "robert@arles.us",
-      asc_provider: "AH3T5F47R4"
-    )
+    # notarize(
+    #   package: appFileName,
+    #   bundle_id: "us.arles.sol",
+    #   username: "robert@arles.us",
+    #   asc_provider: "AH3T5F47R4"
+    # )
 
     zip(
       path: appFileName,
