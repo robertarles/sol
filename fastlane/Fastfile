@@ -14,7 +14,7 @@ platform :mac do
 
     version = get_version_number(xcodeproj: "./macos/sol.xcodeproj")
 
-    path = "/Users/robert/src/robertarles/sol"
+    path = "/Users/robert/src/robertarles/sol/"
     appFileName = path + "Sol.app"
     zipFileName = path + "releases/" + version + ".zip"
     
