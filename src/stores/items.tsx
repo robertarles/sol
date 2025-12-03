@@ -349,6 +349,51 @@ export function createBaseItems(store: IRootStore) {
       },
     },
     {
+      id: 'resize_top_two_thirds',
+      IconComponent: () => {
+        return (
+          <View className="w-6 h-6 p-0.5 rounded justify-start bg-black">
+            <View className="w-5 h-[66%] rounded-sm bg-white" />
+          </View>
+        )
+      },
+      name: 'Resize window to top two-thirds',
+      type: ItemType.CONFIGURATION,
+      callback: () => {
+        solNative.resizeTopTwoThirds()
+      },
+    },
+    {
+      id: 'resize_bottom_two_thirds',
+      IconComponent: () => {
+        return (
+          <View className="w-6 h-6 p-0.5 rounded justify-end bg-black">
+            <View className="w-5 h-[66%] rounded-sm bg-white" />
+          </View>
+        )
+      },
+      name: 'Resize window to bottom two-thirds',
+      type: ItemType.CONFIGURATION,
+      callback: () => {
+        solNative.resizeBottomTwoThirds()
+      },
+    },
+    {
+      id: 'resize_middle_two_thirds',
+      IconComponent: () => {
+        return (
+          <View className="w-6 h-6 p-0.5 rounded flex-row justify-center bg-black">
+            <View className="w-[66%] h-5 rounded-sm bg-white" />
+          </View>
+        )
+      },
+      name: 'Resize window to middle two-thirds',
+      type: ItemType.CONFIGURATION,
+      callback: () => {
+        solNative.resizeMiddleTwoThirds()
+      },
+    },
+    {
       id: 'move_next_screen',
       IconComponent: () => {
         return (

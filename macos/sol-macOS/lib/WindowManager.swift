@@ -19,6 +19,12 @@ enum TwoThirds {
   case right
 }
 
+enum VerticalTwoThirds {
+  case top
+  case bottom
+  case middle
+}
+
 enum ScreenHalf {
   case top
   case bottom
@@ -33,6 +39,9 @@ enum LastAction {
   case rightHalf
   case rightThird
   case rightTwoThirds
+  case topTwoThirds
+  case bottomTwoThirds
+  case middleTwoThirds
   case top
   case bottom
   case bottomLeft
@@ -283,6 +292,54 @@ class WindowManager {
 
       let size = CGSize(
         width: normalizedScreenFrame.width / 3 * 2, height: normalizedScreenFrame.height)
+
+      window.setRectOf(CGRect(origin: origin, size: size))
+  }
+
+  func moveVerticalTwoThirds(_ position: VerticalTwoThirds) {
+      guard let window = AccessibilityElement.frontmostWindow()
+      else {
+        NSSound.beep()
+        return
+      }
+
+      let screens = screenDetector.detectScreens(using: window)
+
+      guard let usableScreens = screens else {
+        NSSound.beep()
+        print("Unable to obtain usable screens")
+        return
+      }
+
+      let normalizedScreenFrame = AccessibilityElement.normalizeCoordinatesOf(
+        usableScreens.frameOfCurrentScreen)
+      guard let identifier = window.getIdentifier() else {
+        return
+      }
+
+      var origin = CGPoint(x: normalizedScreenFrame.origin.x, y: normalizedScreenFrame.origin.y)
+      var size = CGSize(width: normalizedScreenFrame.width, height: normalizedScreenFrame.height)
+
+      switch position {
+          case .top:
+              origin = CGPoint(x: normalizedScreenFrame.origin.x, y: normalizedScreenFrame.origin.y)
+              size = CGSize(width: normalizedScreenFrame.width, height: normalizedScreenFrame.height / 3 * 2)
+              lastActions[identifier] = .topTwoThirds
+
+          case .bottom:
+              origin = CGPoint(
+                  x: normalizedScreenFrame.origin.x,
+                  y: normalizedScreenFrame.origin.y + normalizedScreenFrame.height / 3)
+              size = CGSize(width: normalizedScreenFrame.width, height: normalizedScreenFrame.height / 3 * 2)
+              lastActions[identifier] = .bottomTwoThirds
+
+          case .middle:
+              origin = CGPoint(
+                  x: normalizedScreenFrame.origin.x + normalizedScreenFrame.width / 6,
+                  y: normalizedScreenFrame.origin.y)
+              size = CGSize(width: normalizedScreenFrame.width / 3 * 2, height: normalizedScreenFrame.height)
+              lastActions[identifier] = .middleTwoThirds
+      }
 
       window.setRectOf(CGRect(origin: origin, size: size))
   }

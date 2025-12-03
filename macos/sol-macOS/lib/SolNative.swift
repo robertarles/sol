@@ -264,6 +264,18 @@ class SolNative: RCTEventEmitter {
     WindowManager.sharedInstance.moveTwoThirds(.right)
   }
 
+  @objc func resizeTopTwoThirds() {
+    WindowManager.sharedInstance.moveVerticalTwoThirds(.top)
+  }
+
+  @objc func resizeBottomTwoThirds() {
+    WindowManager.sharedInstance.moveVerticalTwoThirds(.bottom)
+  }
+
+  @objc func resizeMiddleTwoThirds() {
+    WindowManager.sharedInstance.moveVerticalTwoThirds(.middle)
+  }
+
   @objc func moveFrontmostNextScreen() {
     WindowManager.sharedInstance.moveToNextScreen()
   }

@@ -17,7 +17,7 @@ Sol is an open source app launcher, focused on ease of use and speed. It has min
 
 Install via brew
 
-```
+```sh
 brew install --cask sol
 ```
 
@@ -79,6 +79,12 @@ mise install
 
 # You can then run the app with
 bun macos
+
+# -OR-
+
+# local build and install
+bun local
+
 ```
 
 ## License
