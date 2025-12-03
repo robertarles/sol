@@ -48,9 +48,9 @@ platform :mac do
     #   upload_assets: [zipFileName]
     # )
 
-    # release_notes = lane_context[SharedValues::SET_GITHUB_RELEASE_JSON]["body"]
+    release_notes = lane_context[SharedValues::SET_GITHUB_RELEASE_JSON]["body"]
 
-    # file_url = "https://github.com/robertarles/sol/releases/download/" + version + "/" + version + ".zip"
+    file_url = "https://github.com/robertarles/sol/releases/download/" + version + "/" + version + ".zip"
     
     
     Dir.chdir("..") do
@@ -85,7 +85,7 @@ platform :mac do
 
     version = get_version_number(xcodeproj: "./macos/sol.xcodeproj")
 
-    path = "/Users/osp/Developer/sol/"
+    path = "/Users/robert/src/robertarles/sol/"
     appFileName = path + "Sol.app"
     zipFileName = path + "releases/" + version + ".zip"
     
@@ -95,14 +95,14 @@ platform :mac do
       clean: true,
       workspace: "./macos/sol.xcworkspace",
       output_directory: path,
-      export_method: "developer-id"
+      export_method: "development"
     )
 
     notarize(
       package: appFileName,
-      bundle_id: "com.ospfranco.sol",
-      username: "ospfranco@protonmail.com",
-      asc_provider: "24CMR7378R"
+      bundle_id: "us.arles.sol",
+      username: "robert@arles.us",
+      asc_provider: "AH3T5F47R4"
     )
 
     zip(
@@ -112,7 +112,7 @@ platform :mac do
     )
 
     set_github_release(
-      repository_name: "ospfranco/sol",
+      repository_name: "robertarles/sol",
       api_token: ENV["GITHUB_API_TOKEN"],
       tag_name: version,
       is_generate_release_notes: true,
@@ -121,7 +121,7 @@ platform :mac do
 
     release_notes = lane_context[SharedValues::SET_GITHUB_RELEASE_JSON]["body"]
 
-    file_url = "https://github.com/ospfranco/sol/releases/download/" + version + "/" + version + ".zip"
+    file_url = "https://github.com/robertarles/sol/releases/download/" + version + "/" + version + ".zip"
     
     
     Dir.chdir("..") do
