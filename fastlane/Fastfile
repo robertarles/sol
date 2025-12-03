@@ -61,16 +61,16 @@ platform :mac do
       Dir.glob("#{path}releases/local/*.zip").each { |file| File.delete(file) }
 
       sh("git", "add", ".")
-      if !sh("git", "diff", "--cached", "--quiet", exception: false)
+      begin
         sh("git", "commit", "-m", "local " + version)
         sh("git", "push")
-      else
+      rescue
         puts "No git changes to commit"
       end
     end
 
-    sh("cp", "-R", appFileName, "/Applications/")
     sh("killall", "sol")
+    sh("cp", "-R", appFileName, "/Applications/")
     sh("open", "/Applications/Sol.app")
 
     #sh("pingme", "Sol " + version + " released")
