@@ -2,7 +2,7 @@ default_platform(:mac)
 
 platform :mac do
   lane :local do |options|
-    clean_build = options[:clean] || false
+    clean_build = options[:clean] || true
 
     # check_apple_agreement(
     #   apple_id: "ospfranco@protonmail.com",
