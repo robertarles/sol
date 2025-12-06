@@ -1,3 +1,14 @@
+# local files
+CLAUDE.md
+.claude/
+.taskmaster/
+.mcp.json
+.local/
+.env
+.env.*
+.gemini/
+GEMINI.md
+
 # OSX
 #
 .DS_Store
