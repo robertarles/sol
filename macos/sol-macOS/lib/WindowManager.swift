@@ -353,6 +353,54 @@ class WindowManager {
       window.setRectOf(CGRect(origin: origin, size: size))
   }
 
+  func moveVerticalThreeFourths(_ position: VerticalThreeFourths) {
+      guard let window = AccessibilityElement.frontmostWindow()
+      else {
+        NSSound.beep()
+        return
+      }
+
+      let screens = screenDetector.detectScreens(using: window)
+
+      guard let usableScreens = screens else {
+        NSSound.beep()
+        print("Unable to obtain usable screens")
+        return
+      }
+
+      let normalizedScreenFrame = AccessibilityElement.normalizeCoordinatesOf(
+        usableScreens.frameOfCurrentScreen)
+      guard let identifier = window.getIdentifier() else {
+        return
+      }
+
+      var origin = CGPoint(x: normalizedScreenFrame.origin.x, y: normalizedScreenFrame.origin.y)
+      var size = CGSize(width: normalizedScreenFrame.width, height: normalizedScreenFrame.height)
+
+      switch position {
+          case .top:
+              origin = CGPoint(x: normalizedScreenFrame.origin.x, y: normalizedScreenFrame.origin.y)
+              size = CGSize(width: normalizedScreenFrame.width, height: normalizedScreenFrame.height / 4 * 3)
+              lastActions[identifier] = .topThreeFourths
+
+          case .bottom:
+              origin = CGPoint(
+                  x: normalizedScreenFrame.origin.x,
+                  y: normalizedScreenFrame.origin.y + normalizedScreenFrame.height / 4)
+              size = CGSize(width: normalizedScreenFrame.width, height: normalizedScreenFrame.height / 4 * 3)
+              lastActions[identifier] = .bottomThreeFourths
+
+          case .middle:
+              origin = CGPoint(
+                  x: normalizedScreenFrame.origin.x + normalizedScreenFrame.width / 8,
+                  y: normalizedScreenFrame.origin.y)
+              size = CGSize(width: normalizedScreenFrame.width / 4 * 3, height: normalizedScreenFrame.height)
+              lastActions[identifier] = .middleThreeFourths
+      }
+
+      window.setRectOf(CGRect(origin: origin, size: size))
+  }
+
   func moveVerticalTwoThirds(_ position: VerticalTwoThirds) {
       guard let window = AccessibilityElement.frontmostWindow()
       else {
