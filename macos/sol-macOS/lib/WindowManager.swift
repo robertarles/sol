@@ -19,6 +19,17 @@ enum TwoThirds {
   case right
 }
 
+enum ThreeFourths {
+  case left
+  case right
+}
+
+enum VerticalThreeFourths {
+  case top
+  case bottom
+  case middle
+}
+
 enum ScreenHalf {
   case top
   case bottom
@@ -30,9 +41,14 @@ enum LastAction {
   case leftHalf
   case leftThird
   case leftTwoThirds
+  case leftThreeFourths
   case rightHalf
   case rightThird
   case rightTwoThirds
+  case rightThreeFourths
+  case topThreeFourths
+  case bottomThreeFourths
+  case middleThreeFourths
   case top
   case bottom
   case bottomLeft
