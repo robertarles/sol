@@ -47,12 +47,17 @@ enum LastAction {
   case leftHalf
   case leftThird
   case leftTwoThirds
+  case leftThreeFourths
   case rightHalf
   case rightThird
   case rightTwoThirds
+  case rightThreeFourths
   case topTwoThirds
+  case topThreeFourths
   case bottomTwoThirds
+  case bottomThreeFourths
   case middleTwoThirds
+  case middleThreeFourths
   case top
   case bottom
   case bottomLeft
