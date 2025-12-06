@@ -62,6 +62,11 @@ class SolNative extends NativeEventEmitter {
 	resizeRightThird: () => void;
 	resizeLeftTwoThirds: () => void;
 	resizeRightTwoThirds: () => void;
+	resizeLeftThreeFourths: () => void;
+	resizeRightThreeFourths: () => void;
+	resizeTopThreeFourths: () => void;
+	resizeBottomThreeFourths: () => void;
+	resizeMiddleThreeFourths: () => void;
 	searchFilesIndexed: typeof global.__SolProxy.searchFilesIndexed;
 	hasIndexedContent: typeof global.__SolProxy.hasIndexedContent;
 	indexPaths: typeof global.__SolProxy.indexPaths;
@@ -173,6 +178,11 @@ class SolNative extends NativeEventEmitter {
 		this.resizeRightThird = module.resizeRightThird;
 		this.resizeLeftTwoThirds = module.resizeLeftTwoThirds;
 		this.resizeRightTwoThirds = module.resizeRightTwoThirds;
+		this.resizeLeftThreeFourths = module.resizeLeftThreeFourths;
+		this.resizeRightThreeFourths = module.resizeRightThreeFourths;
+		this.resizeTopThreeFourths = module.resizeTopThreeFourths;
+		this.resizeBottomThreeFourths = module.resizeBottomThreeFourths;
+		this.resizeMiddleThreeFourths = module.resizeMiddleThreeFourths;
 		this.toggleDND = module.toggleDND;
 		this.searchFilesIndexed = global.__SolProxy.searchFilesIndexed;
 		this.hasIndexedContent = global.__SolProxy.hasIndexedContent;
