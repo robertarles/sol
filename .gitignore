@@ -6,6 +6,8 @@ CLAUDE.md
 .local/
 .env
 .env.*
+.gemini/
+GEMINI.md
 
 # OSX
 #

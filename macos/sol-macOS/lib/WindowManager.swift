@@ -312,6 +312,47 @@ class WindowManager {
       window.setRectOf(CGRect(origin: origin, size: size))
   }
 
+  func moveThreeFourths(_ threeFourths: ThreeFourths) {
+      guard let window = AccessibilityElement.frontmostWindow()
+      else {
+        NSSound.beep()
+        return
+      }
+
+      let screens = screenDetector.detectScreens(using: window)
+
+      guard let usableScreens = screens else {
+        NSSound.beep()
+        print("Unable to obtain usable screens")
+        return
+      }
+
+      let normalizedScreenFrame = AccessibilityElement.normalizeCoordinatesOf(
+        usableScreens.frameOfCurrentScreen)
+      guard let identifier = window.getIdentifier() else {
+        return
+      }
+
+      var origin = CGPoint(x: normalizedScreenFrame.origin.x, y: normalizedScreenFrame.origin.y)
+
+      switch threeFourths {
+          case .left:
+              origin = CGPoint(x: normalizedScreenFrame.origin.x, y: normalizedScreenFrame.origin.y)
+              lastActions[identifier] = .leftThreeFourths
+
+          case .right:
+              origin = CGPoint(
+                  x: normalizedScreenFrame.origin.x + normalizedScreenFrame.width / 4,
+                  y: normalizedScreenFrame.origin.y)
+              lastActions[identifier] = .rightThreeFourths
+      }
+
+      let size = CGSize(
+        width: normalizedScreenFrame.width / 4 * 3, height: normalizedScreenFrame.height)
+
+      window.setRectOf(CGRect(origin: origin, size: size))
+  }
+
   func moveVerticalTwoThirds(_ position: VerticalTwoThirds) {
       guard let window = AccessibilityElement.frontmostWindow()
       else {
