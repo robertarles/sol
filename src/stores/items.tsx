@@ -394,6 +394,81 @@ export function createBaseItems(store: IRootStore) {
       },
     },
     {
+      id: 'resize_left_three_fourths',
+      IconComponent: () => {
+        return (
+          <View className="w-6 h-6 p-0.5 rounded items-start bg-black">
+            <View className="w-[75%] h-5 rounded-sm bg-white" />
+          </View>
+        )
+      },
+      name: 'Resize window to left three-fourths',
+      type: ItemType.CONFIGURATION,
+      callback: () => {
+        solNative.resizeLeftThreeFourths()
+      },
+    },
+    {
+      id: 'resize_right_three_fourths',
+      IconComponent: () => {
+        return (
+          <View className="w-6 h-6 p-0.5 rounded items-end bg-black">
+            <View className="w-[75%] h-5 rounded-sm bg-white" />
+          </View>
+        )
+      },
+      name: 'Resize window to right three-fourths',
+      type: ItemType.CONFIGURATION,
+      callback: () => {
+        solNative.resizeRightThreeFourths()
+      },
+    },
+    {
+      id: 'resize_top_three_fourths',
+      IconComponent: () => {
+        return (
+          <View className="w-6 h-6 p-0.5 rounded justify-start bg-black">
+            <View className="w-5 h-[75%] rounded-sm bg-white" />
+          </View>
+        )
+      },
+      name: 'Resize window to top three-fourths',
+      type: ItemType.CONFIGURATION,
+      callback: () => {
+        solNative.resizeTopThreeFourths()
+      },
+    },
+    {
+      id: 'resize_bottom_three_fourths',
+      IconComponent: () => {
+        return (
+          <View className="w-6 h-6 p-0.5 rounded justify-end bg-black">
+            <View className="w-5 h-[75%] rounded-sm bg-white" />
+          </View>
+        )
+      },
+      name: 'Resize window to bottom three-fourths',
+      type: ItemType.CONFIGURATION,
+      callback: () => {
+        solNative.resizeBottomThreeFourths()
+      },
+    },
+    {
+      id: 'resize_middle_three_fourths',
+      IconComponent: () => {
+        return (
+          <View className="w-6 h-6 p-0.5 rounded flex-row justify-center bg-black">
+            <View className="w-[75%] h-5 rounded-sm bg-white" />
+          </View>
+        )
+      },
+      name: 'Resize window to middle three-fourths',
+      type: ItemType.CONFIGURATION,
+      callback: () => {
+        solNative.resizeMiddleThreeFourths()
+      },
+    },
+    {
       id: 'move_next_screen',
       IconComponent: () => {
         return (
