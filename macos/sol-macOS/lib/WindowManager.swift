@@ -25,6 +25,17 @@ enum VerticalTwoThirds {
   case middle
 }
 
+enum ThreeFourths {
+  case left
+  case right
+}
+
+enum VerticalThreeFourths {
+  case top
+  case bottom
+  case middle
+}
+
 enum ScreenHalf {
   case top
   case bottom
