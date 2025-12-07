@@ -372,14 +372,14 @@ class WindowManager {
           case .top:
               origin = CGPoint(
                   x: normalizedScreenFrame.origin.x,
-                  y: normalizedScreenFrame.origin.y + normalizedScreenFrame.height / 4)
+                  y: normalizedScreenFrame.origin.y)
               size = CGSize(width: normalizedScreenFrame.width, height: normalizedScreenFrame.height / 4 * 3)
               lastActions[identifier] = .topThreeFourths
 
           case .bottom:
               origin = CGPoint(
                   x: normalizedScreenFrame.origin.x,
-                  y: normalizedScreenFrame.origin.y)
+                  y: normalizedScreenFrame.origin.y + normalizedScreenFrame.height / 4)
               size = CGSize(width: normalizedScreenFrame.width, height: normalizedScreenFrame.height / 4 * 3)
               lastActions[identifier] = .bottomThreeFourths
 
