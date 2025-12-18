@@ -90,3 +90,6 @@ bun local
 ## License
 
 MIT License
+
+`bun local`
+`rsync -Pharvz ~/src/robertarles/sol/sol.app c02:/Applications`
