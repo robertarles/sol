@@ -7,18 +7,23 @@ platform :mac do
   # Use this for day-to-day testing of a release binary on your own machine.
   lane :dev do
     project_root = File.expand_path("..", __dir__)
-    app_path = File.join(project_root, "Sol.app")
+    derived_data = File.join(project_root, "macos/build/DerivedData")
+    built_app = File.join(derived_data, "Build/Products/Release/Sol.app")
 
-    gym(
-      scheme: "release",
-      configuration: "Release",
-      clean: false,
-      workspace: "./macos/sol.xcworkspace",
-      output_directory: project_root,
-      export_method: "developer-id"
+    sh(
+      "xcodebuild", "build",
+      "-workspace", File.join(project_root, "macos/sol.xcworkspace"),
+      "-scheme", "release",
+      "-configuration", "Release",
+      "-derivedDataPath", derived_data,
+      "-allowProvisioningUpdates",
+      "-allowProvisioningDeviceRegistration",
+      "CODE_SIGN_IDENTITY=Apple Development",
+      "DEVELOPMENT_TEAM=QZD59LTC7C",
+      "CODE_SIGN_STYLE=Automatic"
     )
 
-    sh("cp", "-R", app_path, "/Applications/")
+    sh("cp", "-R", built_app, "/Applications/Sol.app")
     sh("open", "/Applications/Sol.app")
   end
 
