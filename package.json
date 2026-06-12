@@ -1,6 +1,6 @@
 {
 	"name": "sol",
-	"version": "2.1.338",
+	"version": "2.1.339",
 	"private": true,
 	"scripts": {
 		"start": "react-native start",
@@ -10,7 +10,7 @@
 		"dev": "bundle exec fastlane dev && rimraf releases/Sol.app && open /Applications/Sol.app",
 		"release": "bundle exec fastlane release",
 		"fix-dependencies": "rnx-align-deps --write",
-		"pods": "cd macos && rm -rf Podfile.lock && bundle exec pod install && xcodebuild -resolvePackageDependencies -workspace sol.xcworkspace -scheme debug",
+		"pods": "cd macos && rm -rf Podfile.lock && bundle exec pod repo update && bundle exec pod install && xcodebuild -resolvePackageDependencies -workspace sol.xcworkspace -scheme debug",
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {

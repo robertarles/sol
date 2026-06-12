@@ -2,6 +2,26 @@ default_platform(:mac)
 
 platform :mac do
 
+  # Local build: builds the release scheme and installs to /Applications.
+  # No version bump, no notarization, no GitHub publish.
+  # Use this for day-to-day testing of a release binary on your own machine.
+  lane :dev do
+    project_root = File.expand_path("..", __dir__)
+    app_path = File.join(project_root, "Sol.app")
+
+    gym(
+      scheme: "release",
+      configuration: "Release",
+      clean: false,
+      workspace: "./macos/sol.xcworkspace",
+      output_directory: project_root,
+      export_method: "developer-id"
+    )
+
+    sh("cp", "-R", app_path, "/Applications/")
+    sh("open", "/Applications/Sol.app")
+  end
+
   lane :release do
 
     # check_apple_agreement(
